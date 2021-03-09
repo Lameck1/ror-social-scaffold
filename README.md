@@ -1,93 +1,103 @@
 # Scaffold for social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+## Table of Contents
+
+* [About the Project](#about-the-project)
+* [Built With](#built-with)
+* [Getting Started](#getting-started)
+* [Prerequisites](#prerequisites)
+* [Contributing](#contributing)
+* [Author](#author)
+* [Acknowledgements](#acknowledgements)
+
+## About Project
+
+This project builds on an existing project forked at [microverseinc](https://github.com/microverseinc/ror-social-scaffold). It a small scale social media project where users have the ability to send and receive friend requests, write post and comment on post. A user can choose to Accept or Reject a friend request and can also cancel a friend request sent.
+
+![screenshot](./timeline.PNG)
+
+## [Live Demo Coming Up]
 
 ## Built With
 
-- Ruby v2.7.0
-- Ruby on Rails v5.2.4
-
-## Live Demo
-
-TBA
-
+- Ruby v2.7.2
+- Rails 6.1.2
+- Postgresql
 
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+* Clone this repo https://github.com/Lameck1/ror-social-scaffold
+    ```
+    git clone https://github.com/Lameck1/ror-social-scaffold.git
+    ```
+* Navigate to private-events folder
+    ```
+    cd ror-social-scaffold
+    ```
+* On the terminal, while in the 'ror-social-scaffold' directory, run the following to install dependency:
+    ```
+    bundle install
+    ```
+* At this point, you still don't have the Postgress database. Run the following to get setup:
+
+  - Ensure that postgresql service is up and runnning
+        ```
+        sudo service postgresql start
+        ```
+  - Create the database
+        ```
+        rails db:create
+        ```
+
+  - Migrate the database
+        ```
+        rails db:migrate
+        ```
+
+* To interact with the project, run:
+    ```
+    rails server
+    ```
+
+    OR
+
+    ```
+    rails s
+    ```
+* Go to the browser and enter 
+    ```http://localhost:3000```
+
 
 ### Prerequisites
 
-Ruby: 2.7.2
-Rails: 5.2.3
-Postgres: >=9.5
+- Ensure you have these installed:
+    - Git
+    - Ruby 2.7.2
+    - Ruby on rails ```gem install rails```
 
-### Setup
+- You also need to ensure your yarn is upto date
+    ```
+    yarn install --check-files
+    ```
 
-Instal gems with:
+## Contributing
 
-```
-bundle install
-```
+Contributions, issues, and feature requests are welcome!
 
-Setup database with:
+Feel free to check the [issues page](https://github.com/Lameck1/ror-social-scaffold/issues).
 
-```
-   rails db:create
-   rails db:migrate
-```
+## Author
 
-### Github Actions
+👤 **Lameck Otieno**
+  - GitHub: [@githubhandle](https://github.com/Lameck1)
+  - Twitter: [@twitterhandle](https://twitter.com/lameck721)
+  - LinkedIn: [LinkedIn](https://www.linkedin.com/in/lameck-odhiambo-642b7077/)
 
-To make sure the linters' checks using Github Actions work properly, you should follow the next steps:
+## Acknowledgements
 
-1. On your recently forked repo, enable the GitHub Actions in the Actions tab.
-2. Create the `feature/branch` and push.
-3. Start working on your milestone as usual.
-4. Open a PR from the `feature/branch` when your work is done.
-
-
-### Usage
-
-Start server with:
-
-```
-    rails server
-```
-
-Open `http://localhost:3000/` in your browser.
-
-### Run tests
-
-```
-    rpsec --format documentation
-```
-
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
-
-### Deployment
-
-TBA
-
-## Authors
-
-TBA
-
-## 🤝 Contributing
-
-Contributions, issues and feature requests are welcome!
-
-Feel free to check the [issues page](issues/).
+Credits go to the following for providing guides on Ruby on Rails Association
+  - [**Rails Guides**](https://guides.rubyonrails.org/association_basics.html)
 
 ## Show your support
 
 Give a ⭐️ if you like this project!
-
-## Acknowledgments
-
-TBA
-
-## 📝 License
-
-TBA
-
