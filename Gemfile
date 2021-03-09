@@ -36,7 +36,6 @@ gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-
 gem 'devise'
 
 group :development, :test do
@@ -45,6 +44,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'capybara', '~> 3.31'
   gem 'rspec-rails', '~> 4.1'
   gem 'shoulda-matchers', '~> 4.5', '>= 4.5.1'
 end
