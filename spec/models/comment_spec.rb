@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
   let(:user) { User.create(name: 'lameck', email: 'lameck72@gmail.com', password: 'MyPass@123') }
+
   it 'ensures that comment is not blank' do
     post = user.posts.new(content: 'Just checked in at Hilton!')
     post1 = user.posts.new(content: nil)
