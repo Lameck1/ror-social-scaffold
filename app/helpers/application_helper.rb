@@ -16,6 +16,14 @@ module ApplicationHelper
     end
   end
 
+  def likes_count(post)
+    "Likes: #{post.likes.count}"
+  end
+
+  def comments_count(post)
+    "Comments: #{post.comments.count}"
+  end
+
   def friendship_button(user)
     return if user == current_user
 
@@ -28,6 +36,18 @@ module ApplicationHelper
         link_to('Reject', friendship_path(user.id), class: 'btn btn-reject', method: :delete, remote: true)
     else
       link_to 'Add Friend', friendships_path(id: user.id), class: 'btn btn-add', method: :post, remote: true
+    end
+  end
+
+  def friend_request_header(user)
+    content_tag :h3, 'Friend Requests:' if user == current_user
+  end
+
+  def list_friend_requests(user)
+    if current_user != user
+      friendship_button(user)
+    else
+      render user.friend_requests
     end
   end
 end
