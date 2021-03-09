@@ -281,6 +281,10 @@ form {
   }
 }
 
+li {
+  margin-top: 15px;
+}
+
 .users-section {
   width: 100%;
   margin: 10px;
@@ -384,16 +388,12 @@ form {
   background-color: $button-color-add;
 }
 
-li {
-  margin-top: 15px;
-}
-
 .post-data {
   color: $primary-color-dark;  
   font-weight: 600;
-}
 
-.post-data span {
-  font-size: 15px;
-  margin-right: 15px;
+  .data {
+    font-size: 15px;
+    margin-right: 15px;
+  }
 }
