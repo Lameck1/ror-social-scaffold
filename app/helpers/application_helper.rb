@@ -15,4 +15,19 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def friendship_button(user)
+    return if user == current_user
+
+    if current_user.friend? user
+      link_to 'Unfriend', friendship_path(user.id), class: 'btn btn-unfriend', method: :delete, remote: true
+    elsif current_user.friend_requests_sent.pluck(:user_id, :friend_id).any?([current_user.id, user.id])
+      link_to 'Cancel Request', friendship_path(user.id), class: 'btn btn-cancel', method: :delete, remote: true
+    elsif current_user.friend_requests_received.pluck(:user_id, :friend_id).any?([user.id, current_user.id])
+      link_to('Accept', friendship_path(user.id), class: 'btn btn-accept', method: :patch, remote: true) +
+        link_to('Reject', friendship_path(user.id), class: 'btn btn-reject', method: :delete, remote: true)
+    else
+      link_to 'Add Friend', friendships_path(id: user.id), class: 'btn btn-add', method: :post, remote: true
+    end
+  end
 end
