@@ -24,9 +24,7 @@ class User < ApplicationRecord
   has_many :friend_requests, through: :friend_requests_received, source: :user
 
   def friend?(user)
-    friendship = Friendship.find_by(user_id: user.id, friend_id: id, state: Friendship::CONFIRMED) ||
-                 Friendship.find_by(user_id: id, friend_id: user.id, state: Friendship::CONFIRMED)
-    true unless friendship.nil?
+    friends.include?(user)
   end
 
   def all_friends_ids
