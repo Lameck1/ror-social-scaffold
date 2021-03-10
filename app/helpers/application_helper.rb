@@ -50,4 +50,14 @@ module ApplicationHelper
       render user.friend_requests
     end
   end
+
+  def mutual_friends_header(user)
+    content_tag :h4, 'Mutual Friends:', class: 'mutual-header' if user != current_user
+  end
+
+  def list_mutual_friends(user)
+    if user != current_user
+      render user.mutual_friends(user).reject { |friend| friend == current_user }
+    end    
+  end
 end

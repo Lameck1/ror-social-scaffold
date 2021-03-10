@@ -4,6 +4,10 @@
   <ul> 
     <%= list_friend_requests(@user) %>
   </ul>
+  <%= mutual_friends_header(@user) %>
+  <ul> 
+    <%= list_mutual_friends(@user) %>
+  </ul>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">

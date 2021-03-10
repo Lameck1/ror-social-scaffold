@@ -30,4 +30,8 @@ class User < ApplicationRecord
   def all_friends_ids
     friends.ids << id
   end
+
+  def mutual_friends(user)
+    friends & user.friends
+  end
 end
