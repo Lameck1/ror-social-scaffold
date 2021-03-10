@@ -21,9 +21,13 @@ class User < ApplicationRecord
                                         where(state: Friendship::REQUEST)
                                       }, class_name: 'Friendship', foreign_key: 'friend_id'
 
-  has_many :confirmed_requests, lambda { where(state: Friendship::CONFIRMED)}, class_name: 'Friendship', foreign_key: 'friend_id'
+  has_many :confirmed_requests, lambda {
+                                  where(state: Friendship::CONFIRMED)
+                                }, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :friendships_confirmed, through: :confirmed_requests, source: :user
-  has_many :requests_confirmed, lambda { where(state: Friendship::CONFIRMED)}, class_name: 'Friendship', foreign_key: 'user_id'
+  has_many :requests_confirmed, lambda {
+                                  where(state: Friendship::CONFIRMED)
+                                }, class_name: 'Friendship', foreign_key: 'user_id'
   has_many :confirmed_friendships, through: :requests_confirmed, source: :friend
 
   has_many :friend_requests, through: :friend_requests_received, source: :user
@@ -35,7 +39,6 @@ class User < ApplicationRecord
   end
 
   def all_friends_ids
-    ids = []
     fc = friendships_confirmed.ids
     cf = confirmed_friendships.ids
     fc + cf << id
