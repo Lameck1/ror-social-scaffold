@@ -22,7 +22,8 @@ class FriendshipsController < ApplicationController
     @friend_request = Friendship.find_by(user_id: params[:id], friend_id: current_user.id)
     if @friend_request.update(state: Friendship::CONFIRMED)
       flash[:notice] = 'Friend Request Confirmed'
-      Friendship.create!(user_id: @friend_request.friend_id, friend_id: @friend_request.user_id, state: Friendship::CONFIRMED)
+      Friendship.create!(user_id: @friend_request.friend_id, friend_id: @friend_request.user_id,
+                         state: Friendship::CONFIRMED)
       redirect_to users_path
     end
   rescue StandardError
