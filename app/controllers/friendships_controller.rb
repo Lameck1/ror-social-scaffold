@@ -22,7 +22,6 @@ class FriendshipsController < ApplicationController
     @friend_request = Friendship.find_by(user_id: params[:id], friend_id: current_user.id)
     if @friend_request.update(state: Friendship::CONFIRMED)
       flash[:notice] = 'Friend Request Confirmed'
-      # friend = User.find(@friend_request.user_id)
       Friendship.create!(user_id: @friend_request.friend_id, friend_id: @friend_request.user_id, state: Friendship::CONFIRMED)
       redirect_to users_path
     end
@@ -32,7 +31,11 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    redirect_to users_path if @friendship.destroy
+    if @friendship.destroy
+      Friendship.find_by(user_id: current_user.id, friend_id: params[:id]).destroy
+      flash[:notice] = 'Friend removed!'
+      redirect_to users_path
+    end
   rescue StandardError
     flash[:alert] = 'Something Went Wrong!'
     redirect_to users_path
