@@ -39,8 +39,6 @@ class User < ApplicationRecord
   end
 
   def all_friends_ids
-    fc = friendships_confirmed.ids
-    cf = confirmed_friendships.ids
-    fc + cf << id
+    friends.ids << id
   end
 end
