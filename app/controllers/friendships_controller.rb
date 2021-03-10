@@ -20,8 +20,12 @@ class FriendshipsController < ApplicationController
 
   def update
     @friend_request = Friendship.find_by(user_id: params[:id], friend_id: current_user.id)
-    @friend_request.update(state: Friendship::CONFIRMED)
-    redirect_to users_path
+    if @friend_request.update(state: Friendship::CONFIRMED)
+      flash[:notice] = 'Friend Request Confirmed'
+      # friend = User.find(@friend_request.user_id)
+      Friendship.create!(user_id: @friend_request.friend_id, friend_id: @friend_request.user_id, state: Friendship::CONFIRMED)
+      redirect_to users_path
+    end
   rescue StandardError
     flash[:alert] = 'Something Went Wrong!'
     redirect_to users_path
