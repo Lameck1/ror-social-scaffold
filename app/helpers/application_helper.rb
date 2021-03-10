@@ -56,8 +56,6 @@ module ApplicationHelper
   end
 
   def list_mutual_friends(user)
-    if user != current_user
-      render user.mutual_friends(user).reject { |friend| friend == current_user }
-    end    
+    render(user.mutual_friends(user).reject { |friend| friend == current_user }) if user != current_user
   end
 end
