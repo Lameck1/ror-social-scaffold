@@ -50,4 +50,21 @@ module ApplicationHelper
       render user.friend_requests
     end
   end
+
+  def mutual_friends_header(user)
+    content_tag :h4, 'Mutual Friends:', class: 'mutual-header' if user != current_user
+  end
+
+  def list_mutual_friends(user)
+    render(user.mutual_friends(user).reject { |friend| friend == current_user }) if user != current_user
+  end
+
+  def show_menu_links
+    if current_user
+      link_to(current_user.name, user_path(current_user), class: 'menu-item') +
+        link_to('Sign out', destroy_user_session_path, method: :delete)
+    else
+      link_to 'Sign in', user_session_path
+    end
+  end
 end

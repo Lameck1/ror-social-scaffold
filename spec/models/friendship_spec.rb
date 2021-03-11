@@ -15,7 +15,9 @@ RSpec.describe Friendship, type: :model do
   end
 
   it 'can check if user_one is a friend to user_two and vice-versa' do
-    user_one.friendships.create(user_id: user_one.id, friend_id: user_two.id, state: Friendship::CONFIRMED)
+    user_one.friendships.create!(user_id: user_one.id, friend_id: user_two.id, state: Friendship::CONFIRMED)
+    user_two.friendships.create(user_id: user_two.id, friend_id: user_one.id, state: Friendship::CONFIRMED)
     expect(user_two.friend?(user_one)).to eql(true)
+    expect(user_one.friend?(user_two)).to eql(true)
   end
 end

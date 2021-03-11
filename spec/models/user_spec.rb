@@ -22,7 +22,7 @@ RSpec.describe User, type: :model do
     describe 'friendship status' do
       it 'checks if users are friends' do
         user_one.friendships.create(user_id: user_one.id, friend_id: user_two.id, state: Friendship::CONFIRMED)
-        expect(user_two.friend?(user_one)).to eql(true)
+        expect(user_one.friend?(user_two)).to eql(true)
       end
 
       it 'checks for existance of friend requests' do
