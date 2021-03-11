@@ -16,7 +16,7 @@ This project builds on an existing project forked at [microverseinc](https://git
 
 ![screenshot](./timeline.PNG)
 
-## [Live Demo Coming Up]
+## ## [Live Demo](https://ror-social-scaffold.herokuapp.com/)
 
 ## Built With
 
